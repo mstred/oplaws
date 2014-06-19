@@ -9,31 +9,34 @@ package br.cin.ufpe.util;
  */
 public class OperationalLaws {
 
-    public static void utilization1(Number resourceThroughput, Number resourceServiceTime) {
-
+    public static Double utilization1(Double resourceThroughput, Double resourceServiceTime) {
+        return resourceThroughput * resourceServiceTime;
     }
 
-    public static void utilization2(Number systemThroughput, Number resourceServiceDemand) {
-        
+    public static Double utilization2(Double systemThroughput, Double resourceServiceDemand) {
+        return systemThroughput * resourceServiceDemand;
     }
 
-    public static void forcedFlow(Number systemThroughput, Number resourceVisits) {
-        
+    public static Double forcedFlow(Double systemThroughput, Double resourceVisits) {
+        return systemThroughput * resourceVisits;
     }
 
-    public static void little(Number resourceThroughput, Number resourceResponseTime) {
-        
+    public static Double little(Double resourceThroughput, Double resourceResponseTime) {
+        return resourceThroughput * resourceResponseTime;
     }
 
-    public static void generalResponseTime(int times, Number resourceResponseTime, Number resourceVisits) {
-        
+    public static Double generalResponseTime(int times, Double resourceResponseTime, Double resourceVisits) {
+        Double generalResponseTime = 0D;
+        for (int i = 1; i <= times; i++)
+            generalResponseTime += (resourceResponseTime * resourceVisits);
+        return generalResponseTime;
     }
 
-    public static void interactiveResponseTime(Number jobs, Number systemThroughput, Number thinkTime) {
-        
+    public static Double interactiveResponseTime(Double jobs, Double systemThroughput, Double thinkTime) {
+        return (jobs / systemThroughput) - thinkTime;
     }
 
-    public static void asymptoticBounds() {
-        
+    public static Double asymptoticBounds() {
+        return null;
     }
 }
